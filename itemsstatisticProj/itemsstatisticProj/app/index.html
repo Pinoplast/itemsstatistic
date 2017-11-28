@@ -3,6 +3,7 @@
 <head>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular.min.js"></script>
     <script src="app/components.js"></script>
+    <script src="app/controllers/paginationController.js"></script>
     <script src="app/app.js"></script>
     <link rel="stylesheet" href="app/styles/main.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -152,7 +153,18 @@
                             </div>
                         </div>
                     </div>
-                    
+                    <div ng-controller="paginationController">
+                        <div id="content">
+                            <ul class="list-group">
+                                <li class="list-group-item" ng-repeat="item in items | startFrom: startingItem() | limitTo: itemsPerPage">{{ item }}</li>
+                            </ul>
+                            <div id="pagination" class="row">
+                                <button class="pull-left btn btn-primary btn-sm" ng-disabled="firstPage()" ng-click="pageBack()">Назад</button>
+                                <span>{{currentPage+1}} из {{numberOfPages()}}</span>
+                                <button class="pull-right  btn btn-primary btn-sm" ng-disabled="lastPage()" ng-click="pageForward()">Вперед</button>
+                            </div>
+                        </div>
+                    </div>
                 </pane>
                 <pane title="Item statistic" class="col-sm-8 col-sm-offset-2">
                     <div ng-controller="BeerCounter">
