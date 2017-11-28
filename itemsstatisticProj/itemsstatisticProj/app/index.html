@@ -1,14 +1,168 @@
 ﻿<!doctype html>
-<html ng-app>
+<html ng-app="app">
 <head>
-    <script src="app/node_modules/angular/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular.min.js"></script>
+    <script src="app/components.js"></script>
+    <script src="app/app.js"></script>
+    <link rel="stylesheet" href="app/styles/main.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
 </head>
 <body>
-    <div>
-        <label>Name:</label>
-        <input type="text" ng-model="yourName" placeholder="Enter a name here">
-        <hr>
-        <h1>Hello {{yourName}}!</h1>
+    <div class="container">
+        <div class="row">
+            <tabs>
+                <pane title="Items" class="col-sm-10 col-sm-offset-1">
+                    <h1 class="header">Items</h1>
+
+                    <h3>Add new item</h3>
+                    <div class="add-place">
+                        <form ng-submit="items.addItem()" class="horizontal-flex-container">
+                            <div class="flex-item">
+                                <input type="text" ng-model="items.itemName"
+                                       placeholder="Item name">
+                            </div>
+                            <div class="flex-item">
+                                <input type="text" ng-model="items.itemType"
+                                       placeholder="Item type">
+                            </div>
+                            <div class="flex-item">
+                                <input class="btn-primary" type="submit" value="add">
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="custom-table vertical-flex-container">
+                        <!-- Here's header for a table.  -->
+                        <div class="flex-item">
+                            <div class="horizontal-flex-container">
+                                <div class="flex-item">
+                                    <h5>Item name</h5>
+                                </div>
+                                <div class="flex-item">
+                                    <h5>Item type</h5>
+                                </div>
+                                <div class="flex-item">
+                                    <h5>Action</h5>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex-item">
+                            <div class="horizontal-flex-container">
+                                <div class="flex-item">
+                                    <h5>Add new item</h5>
+                                </div>
+                                <div class="flex-item">
+                                    <h5>Add new item</h5>
+                                </div>
+
+                                <div class="flex-item">
+                                    <a>delete</a>
+                                    <a>edit</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex-item">
+                            <div class="horizontal-flex-container">
+                                <div class="flex-item">
+                                    <h5>Add new item</h5>
+                                </div>
+                                <div class="flex-item">
+                                    <h5>Add new item</h5>
+                                </div>
+
+                                <div class="flex-item">
+                                    <a>delete</a>
+                                    <a>edit</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex-item">
+                            <div class="horizontal-flex-container">
+                                <div class="flex-item">
+                                    <h5>Add new item</h5>
+                                </div>
+                                <div class="flex-item">
+                                    <h5>Add new item</h5>
+                                </div>
+
+                                <div class="flex-item">
+                                    <a>delete</a>
+                                    <a>edit</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex-item">
+                            <div class="horizontal-flex-container">
+                                <div class="flex-item">
+                                    <h5>Add new item</h5>
+                                </div>
+                                <div class="flex-item">
+                                    <h5>Add new item</h5>
+                                </div>
+
+                                <div class="flex-item">
+                                    <a>delete</a>
+                                    <a>edit</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex-item">
+                            <div class="horizontal-flex-container">
+                                <div class="flex-item">
+                                    <h5>Add new item</h5>
+                                </div>
+                                <div class="flex-item">
+                                    <h5>Add new item</h5>
+                                </div>
+
+                                <div class="flex-item">
+                                    <a>delete</a>
+                                    <a>edit</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex-item">
+                            <div class="horizontal-flex-container">
+                                <div class="flex-item">
+                                    <h5>Add new item</h5>
+                                </div>
+                                <div class="flex-item">
+                                    <h5>Add new item</h5>
+                                </div>
+
+                                <div class="flex-item">
+                                    <a>delete</a>
+                                    <a>edit</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex-item">
+                            <div class="horizontal-flex-container">
+                                <div class="flex-item">
+                                    <h5>Add new item</h5>
+                                </div>
+                                <div class="flex-item">
+                                    <h5>Add new item</h5>
+                                </div>
+                                <div class="flex-item">
+                                    <a>delete</a>
+                                    <a>edit</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </pane>
+                <pane title="Item statistic" class="col-sm-8 col-sm-offset-2">
+                    <div ng-controller="BeerCounter">
+                        <div ng-repeat="beerCount in beers">
+                            <ng-pluralize count="beerCount" when="beerForms"></ng-pluralize>
+                        </div>
+                    </div>
+                </pane>
+            </tabs>
+        </div>
     </div>
 </body>
 </html>
