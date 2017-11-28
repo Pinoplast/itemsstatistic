@@ -1,4 +1,4 @@
-﻿angular.module('app', ['components'])
+﻿angular.module('app', ['components', 'controllers'])
 
     .controller('BeerCounter', function ($scope, $locale) {
         $scope.beers = [0, 1, 2, 3, 4, 5, 6];
