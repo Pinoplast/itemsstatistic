@@ -2,178 +2,35 @@
 <html ng-app="app">
 <head>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular.min.js"></script>
-    <script src="app/components.js"></script>
-    <script src="app/controllers/paginationController.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular-route.min.js"></script>
+    <script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-2.5.0.js"></script>
+
+
+    <script src="app/node_modules/angular-paging/dist/paging.min.js"></script>
+    <script src="app/directives/components.js"></script>
+    <script src="app/controllers/controllers.js"></script>
     <script src="app/app.js"></script>
+
     <link rel="stylesheet" href="app/styles/main.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-
 </head>
 <body>
+
     <div class="container">
-        <div class="row">
-            <tabs>
-                <pane title="Items" class="col-sm-10 col-sm-offset-1">
-                    <h1 class="header">Items</h1>
+        <div class="row" ng-controller="TabsCtrl">
 
-                    <h3>Add new item</h3>
-                    <div class="add-place">
-                        <form ng-submit="items.addItem()" class="horizontal-flex-container">
-                            <div class="flex-item">
-                                <input type="text" ng-model="items.itemName"
-                                       placeholder="Item name">
-                            </div>
-                            <div class="flex-item">
-                                <input type="text" ng-model="items.itemType"
-                                       placeholder="Item type">
-                            </div>
-                            <div class="flex-item">
-                                <input class="btn-primary" type="submit" value="add">
-                            </div>
-                        </form>
-                    </div>
+            <uib-tabset active="active">
+                <uib-tab ng-repeat="tab in tabs" index="tab.id" ng-click="onClickTab(tab)" ng-hide="tab.hide">
+                    <uib-tab-heading>
+                        {{tab.title}}
+                    </uib-tab-heading>
+                </uib-tab>
+            </uib-tabset>
 
-                    <div class="custom-table vertical-flex-container">
-                        <!-- Here's header for a table.  -->
-                        <div class="flex-item">
-                            <div class="horizontal-flex-container">
-                                <div class="flex-item">
-                                    <h5>Item name</h5>
-                                </div>
-                                <div class="flex-item">
-                                    <h5>Item type</h5>
-                                </div>
-                                <div class="flex-item">
-                                    <h5>Action</h5>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="flex-item">
-                            <div class="horizontal-flex-container">
-                                <div class="flex-item">
-                                    <h5>Add new item</h5>
-                                </div>
-                                <div class="flex-item">
-                                    <h5>Add new item</h5>
-                                </div>
-
-                                <div class="flex-item">
-                                    <a>delete</a>
-                                    <a>edit</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="flex-item">
-                            <div class="horizontal-flex-container">
-                                <div class="flex-item">
-                                    <h5>Add new item</h5>
-                                </div>
-                                <div class="flex-item">
-                                    <h5>Add new item</h5>
-                                </div>
-
-                                <div class="flex-item">
-                                    <a>delete</a>
-                                    <a>edit</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="flex-item">
-                            <div class="horizontal-flex-container">
-                                <div class="flex-item">
-                                    <h5>Add new item</h5>
-                                </div>
-                                <div class="flex-item">
-                                    <h5>Add new item</h5>
-                                </div>
-
-                                <div class="flex-item">
-                                    <a>delete</a>
-                                    <a>edit</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="flex-item">
-                            <div class="horizontal-flex-container">
-                                <div class="flex-item">
-                                    <h5>Add new item</h5>
-                                </div>
-                                <div class="flex-item">
-                                    <h5>Add new item</h5>
-                                </div>
-
-                                <div class="flex-item">
-                                    <a>delete</a>
-                                    <a>edit</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="flex-item">
-                            <div class="horizontal-flex-container">
-                                <div class="flex-item">
-                                    <h5>Add new item</h5>
-                                </div>
-                                <div class="flex-item">
-                                    <h5>Add new item</h5>
-                                </div>
-
-                                <div class="flex-item">
-                                    <a>delete</a>
-                                    <a>edit</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="flex-item">
-                            <div class="horizontal-flex-container">
-                                <div class="flex-item">
-                                    <h5>Add new item</h5>
-                                </div>
-                                <div class="flex-item">
-                                    <h5>Add new item</h5>
-                                </div>
-
-                                <div class="flex-item">
-                                    <a>delete</a>
-                                    <a>edit</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="flex-item">
-                            <div class="horizontal-flex-container">
-                                <div class="flex-item">
-                                    <h5>Add new item</h5>
-                                </div>
-                                <div class="flex-item">
-                                    <h5>Add new item</h5>
-                                </div>
-                                <div class="flex-item">
-                                    <a>delete</a>
-                                    <a>edit</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div ng-controller="paginationController">
-                        <div id="content">
-                            <ul class="list-group">
-                                <li class="list-group-item" ng-repeat="item in items | startFrom: startingItem() | limitTo: itemsPerPage">{{ item }}</li>
-                            </ul>
-                            <div id="pagination" class="row">
-                                <button class="pull-left btn btn-primary btn-sm" ng-disabled="firstPage()" ng-click="pageBack()">Назад</button>
-                                <span>{{currentPage+1}} из {{numberOfPages()}}</span>
-                                <button class="pull-right  btn btn-primary btn-sm" ng-disabled="lastPage()" ng-click="pageForward()">Вперед</button>
-                            </div>
-                        </div>
-                    </div>
-                </pane>
-                <pane title="Item statistic" class="col-sm-8 col-sm-offset-2">
-                    <div ng-controller="BeerCounter">
-                        <div ng-repeat="beerCount in beers">
-                            <ng-pluralize count="beerCount" when="beerForms"></ng-pluralize>
-                        </div>
-                    </div>
-                </pane>
-            </tabs>
+            <div id="mainView">
+                <div ng-include="currentTab" class="col-md-8 col-md-offset-2">
+                </div>
+            </div>
         </div>
     </div>
 </body>

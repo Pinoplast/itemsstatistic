@@ -22,8 +22,8 @@
         flex: 0 1 auto;
     }
 
-.flex-item * {
-    margin: 2px;
+.flex-item h5 {
+    margin: 4px 3px;
 }
 
 .vertical-flex-container {
@@ -43,7 +43,7 @@
     border: 1px solid black;
 }
 
-    .custom-table div {
+    .custom-table * {
         width: 100%;
     }
 
@@ -53,4 +53,20 @@
 
     .custom-table > .flex-item:nth-child(even) {
         background: whitesmoke;
+    }
+
+
+.pagination {
+    word-spacing: -1em; /* hide whitespace between elements if separated by whitespace in the source */
+    text-align: center;
+}
+
+    .pagination li {
+        display: -moz-inline-box; /* FF2 or lower */
+        display: inline-block;
+        word-spacing: normal;
+        vertical-align: top;
+        /* IE6/7 inline-block hack */
+        *display: inline;
+        *zoom: 1;
     }

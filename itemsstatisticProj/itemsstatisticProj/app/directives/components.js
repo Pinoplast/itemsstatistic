@@ -5,7 +5,7 @@
             restrict: 'E',
             transclude: true,
             scope: {},
-            controller: function ($scope, $element) {
+            controller: ['$scope', '$element', '$location', '$rootScope', function ($scope, $element, $location, $rootScope) {
                 var panes = $scope.panes = [];
 
                 $scope.select = function (pane) {
@@ -19,7 +19,7 @@
                     if (panes.length == 0) $scope.select(pane);
                     panes.push(pane);
                 }
-            },
+            }],
             template:
             '<div class="tabbable">' +
             '<ul class="nav nav-tabs">' +

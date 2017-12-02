@@ -1,0 +1,18 @@
+﻿<div ng-controller="ItemCtrl">
+    <h1 class="header">Edit item</h1>
+    <div class="add-place">
+        <form ng-submit="save()" class="horizontal-flex-container">
+            <div class="flex-item">
+                <input type="text" name="name" ng-model="item.Name"
+                       placeholder="Item name" value="item.Name">
+            </div>
+            <div class="flex-item">
+                <input type="text" ng-model="item.Type.Name"
+                       placeholder="Item type" value="item.Type.Name">
+            </div>
+            <div class="flex-item">
+                <input class="btn-primary" type="submit" value="Save">
+            </div>
+        </form>
+    </div>
+</div>

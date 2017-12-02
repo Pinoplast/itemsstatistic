@@ -1,0 +1,57 @@
+﻿<h1 class="header">Items</h1>
+
+<h3>Add new item</h3>
+<div class="add-place">
+    <form ng-submit="items.addItem()" class="horizontal-flex-container">
+        <div class="flex-item">
+            <input type="text" ng-model="items.itemName"
+                   placeholder="Item name">
+        </div>
+        <div class="flex-item">
+            <input type="text" ng-model="items.itemType"
+                   placeholder="Item type">
+        </div>
+        <div class="flex-item">
+            <input class="btn-primary" type="submit" value="add">
+        </div>
+    </form>
+</div>
+<div ng-controller="ItemsCtrl">
+    <div class="custom-table vertical-flex-container">
+        <div class="flex-item">
+            <div class="horizontal-flex-container">
+                <div class="flex-item">
+                    <h5>Item name</h5>
+                </div>
+                <div class="flex-item">
+                    <h5>Item type</h5>
+                </div>
+                <div class="flex-item">
+                    <h5>Action</h5>
+                </div>
+            </div>
+        </div>
+        <div ng-repeat="item in items" class="flex-item">
+            <div class="horizontal-flex-container">
+                <div class="flex-item">
+                    <h5>{{item.Name}}</h5>
+                </div>
+                <div class="flex-item">
+                    <h5>{{item.Type.Name}}</h5>
+                </div>
+                <div class="flex-item">
+                    <a>delete</a>
+                    <a ng-click="linkToEditItem(item.id)">edit</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <paging class="center" page="page"
+            page-size="pageSize"
+            total="total"
+            pg-href="/Item?page={page}"
+            paging-action="DoCtrlPagingAct(page)">
+    </paging>
+</div>
+

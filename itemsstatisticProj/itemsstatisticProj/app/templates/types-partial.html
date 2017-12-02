@@ -1,0 +1,33 @@
+﻿<h1 class="header">Types</h1>
+
+<div ng-controller="TypesCtrl">
+    <div class="custom-table vertical-flex-container">
+        <div class="flex-item">
+            <div class="horizontal-flex-container">
+                <div class="flex-item">
+                    <h5>Item type</h5>
+                </div>
+                <div class="flex-item">
+                    <h5>Count</h5>
+                </div>
+            </div>
+        </div>
+        <div ng-repeat="type in types" class="flex-item">
+            <div class="horizontal-flex-container">
+                <div class="flex-item">
+                    <h5>{{type.Name}}</h5>
+                </div>
+                <div class="flex-item">
+                    <h5>{{type.AmountOfDependencies}}</h5>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <paging page="page"
+            page-size="pageSize"
+            total="total"
+            paging-action="DoCtrlPagingAct(page)">
+    </paging>
+</div>
+
